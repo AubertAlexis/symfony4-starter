@@ -10,7 +10,7 @@ use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
  * @ORM\Entity
- * @UniqueEntity("email")
+ * @UniqueEntity("email", message="Cet email est déjà pris par un autre utilisateur, merci de le changer !")
  */
 class User implements UserInterface
 {
@@ -29,7 +29,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\Length(min = 10, minMessage = "Votre nom d'utilisateur doit faire au minimum {{ limit }} caractères")
+     * @Assert\Length(min = 5, minMessage = "Votre nom d'utilisateur doit faire au minimum {{ limit }} caractères")
      */
     private $username;
 
