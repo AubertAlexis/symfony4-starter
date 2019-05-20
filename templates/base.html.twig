@@ -2,11 +2,27 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>
+            {% block title %}Symfony 4 - Starter{% endblock %}
+        </title>
+
         {% block stylesheets %}{% endblock %}
+
     </head>
-    <body>
+    <body class="{{ body_class is defined ? body_class}}">
+        {% for label, messages in app.flashes %}
+            <div class="container">
+                <div class="alert alert-{{ label }}">
+                    {% for message in messages %}
+                        <p>{{ message | raw }}</p>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
         {% block body %}{% endblock %}
+
         {% block javascripts %}{% endblock %}
     </body>
 </html>

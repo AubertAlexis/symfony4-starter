@@ -26,8 +26,10 @@
         "symfony/yaml": "4.2.*"
     },
     "require-dev": {
+        "doctrine/doctrine-fixtures-bundle": "^3.1",
+        "fzaninotto/faker": "^1.8",
         "symfony/debug-pack": "*",
-        "symfony/maker-bundle": "^1.0",
+        "symfony/maker-bundle": "^1.11",
         "symfony/profiler-pack": "*",
         "symfony/test-pack": "*",
         "symfony/web-server-bundle": "4.2.*"
