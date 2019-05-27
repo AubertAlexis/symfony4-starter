@@ -47,6 +47,19 @@ class AccountController extends AbstractController
     }
 
     /**
+     * Check for role and redirect
+     *
+     * @Route("/connexion/succes", name="login_success")
+     * 
+     * @return Response
+     */
+    public function onLoginSuccess()
+    {
+        if ($this->isGranted('ROLE_ADMIN')) return $this->redirectToRoute('admin_dashboard_index');
+        else return $this->redirectToRoute('home_index');
+    }
+
+    /**
      * Logout
      * 
      * @Route("/deconnexion", name="logout")

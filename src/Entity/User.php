@@ -22,6 +22,16 @@ class User implements UserInterface
     private $id;
 
     /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $firstName;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $lastName;
+
+    /**
      * @ORM\Column(type="string", length=255, unique=true)
      * @Assert\Email(message = "L'email '{{ value }}' n'est pas valide.")
      */
@@ -47,6 +57,22 @@ class User implements UserInterface
      * @ORM\Column(type="datetime")
      */
     private $createdAt;
+
+    /**
+     * Give the full name of user
+     *
+     * @return string
+     */
+    public function getFullName()
+    {
+        return "{$this->firstName} {$this->lastName}";
+    }
+
+    public function getRoleTitle()
+    {
+        if(in_array("ROLE_ADMIN", $this->roles)) return "Administrateur";
+        else return "Utilisateur";
+    }
 
     public function __construct()
     {
@@ -116,4 +142,28 @@ class User implements UserInterface
 
     public function eraseCredentials()
     {}
+
+    public function getFirstName(): ?string
+    {
+        return $this->firstName;
+    }
+
+    public function setFirstName(string $firstName): self
+    {
+        $this->firstName = $firstName;
+
+        return $this;
+    }
+
+    public function getLastName(): ?string
+    {
+        return $this->lastName;
+    }
+
+    public function setLastName(string $lastName): self
+    {
+        $this->lastName = $lastName;
+
+        return $this;
+    }
 }

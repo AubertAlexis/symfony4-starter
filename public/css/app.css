@@ -1,0 +1,40 @@
+.btn.rounded {
+    border-radius: 50%!important;
+    width: 40px;
+    height: 40px;
+}
+
+.btn.rounded.with-icon {
+    position: relative;
+}
+
+.btn.rounded.with-icon i {
+    position: absolute;
+    top: 50%;
+    height: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+}
+
+table tbody tr td {
+    vertical-align: middle!important;
+}
+
+.user-show .card-body small {
+    font-style: italic;
+}
+
+.content-center .form-center {
+    display: flex;
+    justify-content: center;
+}
+.content-center .form-center .content{
+    background-color:#ffffff;
+    padding: 25px;
+    border-radius: 5px;
+}
+
+.content-center h1 {
+    text-align: center;
+}
