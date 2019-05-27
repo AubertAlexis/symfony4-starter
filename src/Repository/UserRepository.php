@@ -34,15 +34,18 @@ class UserRepository extends ServiceEntityRepository
         ;
     }
     */
-    /*
-    public function findOneBySomeField($value): ?User
+    
+    /**
+     * Count users
+     *
+     * @return integer
+     */
+    public function countUser()
     {
         return $this->createQueryBuilder('u')
-            ->andWhere('u.exampleField = :val')
-            ->setParameter('val', $value)
+            ->select('count(u.id)')
             ->getQuery()
-            ->getOneOrNullResult()
-        ;
+            ->getSingleScalarResult();
     }
-    */
+    
 }
