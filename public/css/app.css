@@ -38,3 +38,7 @@ table tbody tr td {
 .content-center h1 {
     text-align: center;
 }
+
+.topbar .fa-user {
+    font-size: 17px;
+}

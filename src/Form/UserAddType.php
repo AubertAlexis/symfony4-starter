@@ -9,8 +9,10 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 
-class UserEditType extends AbstractType
+class UserAddType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -43,8 +45,29 @@ class UserEditType extends AbstractType
                     'class' => "form-control-user"
                 ]
             ])
+            ->add('password', RepeatedType::class, [
+                'type' => PasswordType::class,
+                'invalid_message' => 'Les mots de passe doivent être identiques.',
+                'required' => true,
+                'first_name' => "password",
+                'first_options'  => [
+                    'label' => "Mot de passe",
+                    'attr' => [
+                        'placeholder' => "Mot de passe",
+                        'class' => "form-control-user"
+                    ]
+                ],
+                'second_name' => "passwordRepeat",
+                'second_options' => [
+                    'label' => "Répéter le mot de passe",
+                    'attr' => [
+                        'placeholder' => "Répéter le mot de passe",
+                        'class' => "form-control-user"
+                    ]
+                ],
+            ])
             ->add('save', SubmitType::class, [
-                'label' => "Modifier",
+                'label' => "Créer",
                 'attr' => [
                     'class' => "btn btn-primary btn-user btn-block"
                 ]
