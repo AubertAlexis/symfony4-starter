@@ -8,11 +8,13 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use App\Repository\UserRepository;
 use App\Entity\User;
 use App\Form\UserEditType;
+use App\Form\UserAddType;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 /**
- * @Route("admin/")
+ * @Route("admin/utilisateur/")
  * @isGranted("ROLE_ADMIN")
  */
 class AdminUserController extends AbstractController
@@ -30,7 +32,7 @@ class AdminUserController extends AbstractController
     /**
      * User
      *
-     * @Route("utilisateur", name="admin_user_index")
+     * @Route("", name="admin_user_index")
      * 
      * @return Response
      */
@@ -38,13 +40,56 @@ class AdminUserController extends AbstractController
     {
         return $this->render('admin/user/index.html.twig', [
             'users' => $userRepository->findAll()
+            ]);
+    }
+    
+    /**
+     * Add user
+     *
+     * @Route("ajouter", name="admin_user_add")
+     * @param Request $request
+     * @param UserPasswordEncoderInterface $encoder
+     * @return Response
+     */
+    public function add(UserPasswordEncoderInterface $encoder, Request $request)
+    {
+        $user = new User();
+
+        $form = $this->createForm(UserAddType::class, $user);
+
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()){
+            $user->setRoles(['ROLE_USER']);
+            $user->setPassword(
+                $encoder->encodePassword(
+                    $user, 
+                    $user->getPassword()
+                )
+            );
+
+            $this->manager->persist($user);
+            $this->manager->flush();
+
+            $this->addFlash(
+                'success',
+                "L'utilisateur <strong>{$user->getFullName()}</strong> a bien était créé !"
+            );
+
+            return $this->redirectToRoute('admin_user_index');
+        }
+
+        return $this->render('admin/user/add.html.twig', [
+            'body_class' => "user-add content-center",
+            'user' => $user,
+            'form' => $form->createView()
         ]);
     }
 
     /**
      * Show a specific user
      *
-     * @Route("utilisateur/{id}", name="admin_user_show")
+     * @Route("{id}", name="admin_user_show")
      * 
      * @param User $user
      * @return Response
@@ -57,17 +102,28 @@ class AdminUserController extends AbstractController
         ]);
     }
 
+
     /**
      * Edit user
      *
-     * @Route("utilisateur/{id}/edition", name="admin_user_edit")
+     * @Route("{id}/edition", name="admin_user_edit")
      * 
      * @param User $user
      * @param Request $request
      * @return Response
      */
-    public function edit(Request $request, User $user)
+    public function edit(User $user, Request $request)
     {
+        // Check user role and redirect if is admin
+        if($user->getRoleTitle() == "Administrateur"){
+            $this->addFlash(
+                'danger',
+                "Vous n'avez pas le droit de modifier les informations de <strong>{$user->getFullName()}</strong>."
+            );
+
+            return $this->redirectToRoute('admin_user_index');
+        }
+
         $form = $this->createForm(UserEditType::class, $user);
 
         $form->handleRequest($request);
@@ -93,14 +149,23 @@ class AdminUserController extends AbstractController
     /**
      * Delete user
      *
-     * @Route("utilisateur/{id}/suppression", name="admin_user_delete")
+     * @Route("{id}/suppression", name="admin_user_delete")
      * 
      * @param User $user
-     * @param Request $request
      * @return Response
      */
     public function delete(User $user)
     {
+        // Check user role and redirect if is admin
+        if($user->getRoleTitle() == "Administrateur"){
+            $this->addFlash(
+                'danger',
+                "Vous ne pouvez pas supprimer l'utilisateur <strong>{$user->getFullName()}</strong>."
+            );
+
+            return $this->redirectToRoute('admin_user_index');
+        }
+
         $this->manager->remove($user);
         $this->manager->flush();
 

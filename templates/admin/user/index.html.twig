@@ -11,8 +11,14 @@
 {% block body %}
 
     <div class="card shadow my-4">
-        <div class="card-header py-3">
+        <div class="card-header py-2 d-flex align-items-center">
             <h6 class="m-0 font-weight-bold text-primary">Utilisateurs</h6>
+            <a href="{{ path("admin_user_add") }}" class="btn btn-success btn-icon-split ml-auto">
+                <span class="icon text-white-50">
+                    <i class="fas fa-plus"></i>
+                </span>
+                <span class="text">Ajouter un utilisateur</span>
+            </a>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -47,7 +53,7 @@
                             <td>{{ user.email }}</td>
                             <td>{{ user.username }}</td>
                             <td>{{ user.roleTitle }}</td>
-                            <td>{{ user.createdAt | date("d-m-Y") }}</td>
+                            <td>{{ user.createdAt | date("d-m-Y H:i") }}</td>
                             <td>
                                 <a href="{{ path("admin_user_show", {"id": user.id}) }}" class="btn btn-info rounded with-icon">
                                     <i class="far fa-eye"></i>

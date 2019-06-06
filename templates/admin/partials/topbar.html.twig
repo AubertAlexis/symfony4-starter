@@ -1,5 +1,5 @@
 <!-- Topbar -->
-<nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+<nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow topbar">
 
     <!-- Sidebar Toggle (Topbar) -->
     <button class="btn btn-link d-md-none rounded-circle mr-3" id="sidebarToggleTop">
@@ -168,16 +168,16 @@
         <!-- Nav Item - User Information -->
         <li class="nav-item dropdown no-arrow">
             <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" id="userDropdown" role="button">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ app.user.fullName }}</span>
-                <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><i class="far fa-user text-primary mr-2 fa-2x "></i>{{ app.user.fullName }}</span>
+                {# <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60"> #}
             </a>
             <!-- Dropdown - User Information -->
             <div aria-labelledby="userDropdown" class="dropdown-menu dropdown-menu-right shadow animated--grow-in">
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" href="{{ path('admin_account_index') }}">
                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                     Profil
                 </a>
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" href="{{ path('admin_parameter_index') }}">
                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                     Paramètres
                 </a>
