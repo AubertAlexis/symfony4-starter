@@ -153,7 +153,8 @@ class SecurityController extends AbstractController
  
             $mailer->send($message);
 
-            return $this->redirectToRoute('login');
+            $this->addFlash('success', "Email bien envoyé à l'adresse <strong>{$user->getEmail()}</strong>");
+
         }
 
         return $this->render('security/forgot_password.html.twig', [
