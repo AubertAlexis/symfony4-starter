@@ -8,19 +8,24 @@ This is a simple starter who can be used for any project with back-office.
 
 #### Security
 
-* Login -> check your roles and redirect ( ROLE_ADMIN -> BO | ROLE_USER -> FO)
-* Registration form -> simple user registration
-* Forgot password -> in localhost email is not sended, you have to check the debug bar on the mail icon you will find the url to reset your password
+* **Login** -> check your roles and redirect ( ROLE_ADMIN -> BO | ROLE_USER -> FO) - **Check tips section for credentials**
+* **Registration form** -> simple user registration
+* **Forgot password** -> in localhost email is not sended, you have to check the debug bar on the **mail icon** you will find the **url to reset your password**
 
 #### Back-office
 
-* Dashboard -> actually, he is so simple only the count of users registred
-* User -> table with CRUD and datatable
-* Profil (at right on top) -> edit your personnal informations
-* Parameter (at right on top) -> change your password
+* **Dashboard** -> actually, he is so simple only the count of users registred
+* **User** -> table with CRUD and datatable
+* **Profil** (at right on top) -> edit your personnal informations
+* **Parameter** (at right on top) -> change your password
 
 #### Tips
 
+##### Login :
+* USER - user@user.fr / user
+* ADMIN - admin@admin.fr / admin
+
+##### Title :
 `Sf4-Starter` on title of pages -> `config/packages/twig.yaml` globals -> `const_website_title`
 
 ## Installation
@@ -31,7 +36,7 @@ Download `dependencies` needed for project : `composer install`
 
 ### 2 - Database
 
-`IMPORTANT` : change the .env with your information.
+**`IMPORTANT` : change the .env with your information.**
 
 Create the database :
 `php bin/console doctrine:database:create`
