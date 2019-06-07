@@ -59,6 +59,11 @@ class User implements UserInterface
     private $createdAt;
 
     /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    protected $resetToken;
+
+    /**
      * Give the full name of user
      *
      * @return string
@@ -165,5 +170,15 @@ class User implements UserInterface
         $this->lastName = $lastName;
 
         return $this;
+    }
+
+    public function getResetToken(): string
+    {
+        return $this->resetToken;
+    }
+     
+    public function setResetToken(?string $resetToken): void
+    {
+        $this->resetToken = $resetToken;
     }
 }

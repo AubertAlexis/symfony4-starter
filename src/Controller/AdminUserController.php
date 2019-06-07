@@ -47,6 +47,7 @@ class AdminUserController extends AbstractController
      * Add user
      *
      * @Route("ajouter", name="admin_user_add")
+     * 
      * @param Request $request
      * @param UserPasswordEncoderInterface $encoder
      * @return Response
