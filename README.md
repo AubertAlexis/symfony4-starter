@@ -4,7 +4,7 @@
 This is a simple starter who can be used for any project with back-office.
 `SB admin 2` template is implemented for the design.
 
-This starter has many features
+`features`:
 
 #### Security
 
@@ -14,10 +14,14 @@ This starter has many features
 
 #### Back-office
 
-* Dahsboard -> actually, he is so simple only the count of users registred
+* Dashboard -> actually, he is so simple only the count of users registred
 * User -> table with CRUD and datatable
 * Profil (at right on top) -> edit your personnal informations
 * Parameter (at right on top) -> change your password
+
+#### Tips
+
+`Sf4-Starter` on title of pages -> `config/packages/twig.yaml` globals -> `const_website_title`
 
 ## Installation
 
