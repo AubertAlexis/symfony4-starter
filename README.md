@@ -19,7 +19,7 @@ This is a simple starter who can be used for any project with back-office.
 * **Profil** (at right on top) -> edit your personnal informations
 * **Parameter** (at right on top) -> change your password
 
-#### Tips
+## Tips
 
 ##### Login :
 * USER - user@user.fr / user
