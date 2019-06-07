@@ -50,6 +50,9 @@
                                         {{ form_widget(form.password.passwordRepeat) }}
                                     </div>
                                 </div>
+
+                                {{ form_widget(form._token) }}
+
                                 {{ form_row(form.save) }}
                                 {# <hr>
                                 <a href="index.html" class="btn btn-google btn-user btn-block">

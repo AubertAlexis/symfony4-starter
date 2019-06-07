@@ -18,6 +18,7 @@ class AdminDashboardController extends AbstractController
      *
      * @Route("tableau-de-bord", name="admin_dashboard_index")
      * 
+     * @param UserRepository $userRepository
      * @return Response
      */
     public function index(UserRepository $userRepository)
