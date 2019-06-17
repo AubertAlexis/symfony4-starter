@@ -147,7 +147,7 @@ class SecurityController extends AbstractController
                 ->setFrom('aaubert.test@gmail.com')
                 ->setTo($user->getEmail())
                 ->setBody(
-                    "voici le token pour reseter votre mot de passe : " . $url,
+                    'Voici le lien de réinitialisation de votre mot de passe: <a href="'. $url .'">Réinitialiser mon mot de passe</a>',
                     'text/html'
                 );
  
