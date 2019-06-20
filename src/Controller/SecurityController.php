@@ -147,7 +147,12 @@ class SecurityController extends AbstractController
                 ->setFrom('aaubert.test@gmail.com')
                 ->setTo($user->getEmail())
                 ->setBody(
-                    'Voici le lien de réinitialisation de votre mot de passe: <a href="'. $url .'">Réinitialiser mon mot de passe</a>',
+                    $this->renderView(
+                        'emails/reset_password.html.twig',[
+                            'url' => $url,
+                            'date' => new \DateTime()
+                        ]
+                    ),
                     'text/html'
                 );
  
