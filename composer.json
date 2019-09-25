@@ -1,4 +1,5 @@
 {
+    "name": "AubertAlexis/symfony4-starter",
     "type": "project",
     "license": "proprietary",
     "require": {
