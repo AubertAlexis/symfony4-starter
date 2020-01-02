@@ -1,1 +1,19 @@
 {% extends "base.html.twig" %}
+
+{% block body %}
+	{% include "partials/_navbar.html.twig" %}
+
+	<div class="container mt-5">
+		<div class="jumbotron">
+			<h1 class="display-4">Bienvenue</h1>
+			<p class="lead">Vous êtes actuellement sur la page d'accueil, vous pouvez accédez à l'espace d'administration avec le lien ci-dessous</p>
+			<hr class="my-4">
+			<p>Pour vous connecter, utiliser les identifiants suivants :
+				<b>
+					<em>admin@admin.fr/admin</em>
+				</b>
+			</p>
+			<a class="btn btn-primary btn-lg" href="{{ path('login') }}" role="button">Accès administrateur</a>
+		</div>
+	</div>
+{% endblock %}
